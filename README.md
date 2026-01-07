@@ -9,3 +9,11 @@ Nest - version 11.0.14
 06) mongodb connection
 07) onModuleInit lifecycle hook
 
+🔗 Lifecycle events — NestJS (Fundamentals)
+https://docs.nestjs.com/fundamentals/lifecycle-events
+
+08) Enable cors. Náo precisa instalar o express pois ele ja é nativo do Nest. 
+
+  app.enableCors(); no main.ts
+
+  
