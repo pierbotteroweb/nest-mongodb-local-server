@@ -16,4 +16,5 @@ https://docs.nestjs.com/fundamentals/lifecycle-events
 
   app.enableCors(); no main.ts
 
-  
+09) nest g controller test
+
