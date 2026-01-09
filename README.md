@@ -18,3 +18,7 @@ https://docs.nestjs.com/fundamentals/lifecycle-events
 
 09) nest g controller test
 
+10) Get e Post APIs basicas criadas no controler test
+
+11) Schema para um document da collection programasDeTv
+
