@@ -1,4 +1,4 @@
-import { Prop, Schema } from "@nestjs/mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 import { AnexosPrograma } from "./anexosPrograma.schema";
 
@@ -21,3 +21,5 @@ export class Programa extends Document {
     anexos?:AnexosPrograma
 
 }
+
+export const ProgramaSchema = SchemaFactory.createForClass(Programa);

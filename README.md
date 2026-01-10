@@ -17,8 +17,7 @@ https://docs.nestjs.com/fundamentals/lifecycle-events
   app.enableCors(); no main.ts
 
 09) nest g controller test
-
 10) Get e Post APIs basicas criadas no controler test
-
 11) Schema para um document da collection programasDeTv
+12) Get Programa do ProgramaDeTV usando propriedade value
 
