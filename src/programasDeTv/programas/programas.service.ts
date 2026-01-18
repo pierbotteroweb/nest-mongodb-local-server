@@ -22,4 +22,17 @@ export class ProgramasService {
 
         return programa
     }
+
+    async findAllValues(): Promise<any[]> {
+        const result = await this.programaModel
+        .find({}, { value: 1,titulo: 1, _id: 0 })
+        .lean()
+        .exec();
+
+        return result.map(({value,titulo}) =>({
+                value,
+                titulo
+            }));
+    }
+
 }

@@ -20,4 +20,5 @@ https://docs.nestjs.com/fundamentals/lifecycle-events
 10) Get e Post APIs basicas criadas no controler test
 11) Schema para um document da collection programasDeTv
 12) Get Programa do ProgramaDeTV usando propriedade value
+13) Retorna propriedades especificas dos documents de uma collection
 

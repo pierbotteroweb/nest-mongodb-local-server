@@ -8,4 +8,8 @@ export class ProgramasController {
     findByValue(@Param('value') value:string){
         return this.programasService.findByValueProperty(value)
     }
+    @Get()
+    findAllValues(){
+        return this.programasService.findAllValues()
+    }
 }
