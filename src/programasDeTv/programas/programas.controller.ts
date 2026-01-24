@@ -1,15 +1,26 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { ProgramasService } from './programas.service';
 
 @Controller('programas')
 export class ProgramasController {
     constructor(private readonly programasService: ProgramasService){}
-    @Get(':value')
-    findByValue(@Param('value') value:string){
-        return this.programasService.findByValueProperty(value)
+    @Get('getProgramasMontados')
+    getProgramasMontados(
+        @Query('canal') canal:string,
+        @Query('diaDaSemana') diaDaSemana:string){
+        return this.programasService.getProgramasMontadosByCanalAndDiaDaSemanma(canal,diaDaSemana)
+    }
+    @Get('getArquivo')
+    getArquivo(
+        @Query('programaDeTv') programaDeTv:string){
+        return this.programasService.getArquivoFromProgramaDeTvValue(programaDeTv)
     }
     @Get()
     findAllValues(){
         return this.programasService.findAllValues()
+    }
+    @Get(':value')
+    findByValue(@Param('value') value:string){
+        return this.programasService.findByValueProperty(value)
     }
 }
