@@ -26,3 +26,6 @@ https://docs.nestjs.com/fundamentals/lifecycle-events
 16) Criar schema usado em diferentes collections e logica para escolher colection dinamicamente
 17) Retornar arquivo considerando propriedade order
 18) Ignorar arquivos com order null na busca por ordenacao do order
+19) Service arquivos para obter arquivos de diferentres collections para ProgramaMontado
+20) Reset de added em arquivos de um mesmo programaDeTV em uma collection
+

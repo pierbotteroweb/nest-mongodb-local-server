@@ -10,11 +10,6 @@ export class ProgramasController {
         @Query('diaDaSemana') diaDaSemana:string){
         return this.programasService.getProgramasMontadosByCanalAndDiaDaSemanma(canal,diaDaSemana)
     }
-    @Get('getArquivo')
-    getArquivo(
-        @Query('programaDeTv') programaDeTv:string){
-        return this.programasService.getArquivoFromProgramaDeTvValue(programaDeTv)
-    }
     @Get()
     findAllValues(){
         return this.programasService.findAllValues()
