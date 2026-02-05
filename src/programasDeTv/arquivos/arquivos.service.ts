@@ -84,7 +84,7 @@ export class ArquivosService {
 
         if(!programa) {
             throw new NotFoundException(                
-                `Programa com value "${programaDeTv}" não encontrado`,
+                `Programa com value "${programaDeTv}" não existe`,
             )
         }
 
@@ -131,7 +131,7 @@ export class ArquivosService {
         return arquivoToReturn
     }
 
-    async getArquivosToAsembleProgramaMontado(programasDeTv:string[]){
+    async getArquivosEmLote(programasDeTv:string[]){
         let arquivos:any = []
 
         for (const programa of programasDeTv) {
@@ -145,5 +145,92 @@ export class ArquivosService {
 
         return arquivos
     }
+
+    async getArquivosToAsembleProgramaMontado(programaDeTv:string){
+        
+        const programa:any = await this.programaModel.findOne({value:programaDeTv})
+        .lean()
+        .exec()
+
+        if(!programa) {
+            throw new NotFoundException(                
+                `Programa com value "${programaDeTv}" não encontrado`,
+            )
+        }
+
+        const { value:principal } = programa;
+
+        const arquivoPrincipal:any = await this.getArquivoFromProgramaDeTvValue(principal)
+
+        const {cortesParaIntervalo=[]} = arquivoPrincipal
+
+        const {anexos:{prePos="", intervalo=""}={}} = programa
+        const {anexos:{bloco1=[],bloco2=[],bloco3=[],bloco4=[],bloco5=[],bloco6=[],}={}} = programa
+
+        const listaArquivoPrePos = prePos ? await this.getArquivosEmLote([prePos,prePos]) : []
+
+        const listaProgramaValuesParaIntervalo:any = []
+
+        if(cortesParaIntervalo.length){
+
+            cortesParaIntervalo.map(element => {
+                listaProgramaValuesParaIntervalo.push(intervalo)
+            });
+
+        }
+
+        const listaArquivosIntervalo = listaProgramaValuesParaIntervalo ? 
+        await this.getArquivosEmLote(listaProgramaValuesParaIntervalo) : []
+
+        const listaArquivosBloco1 = await this.getArquivosEmLote(bloco1)
+        const listaArquivosBloco2 = await this.getArquivosEmLote(bloco2)
+        const listaArquivosBloco3 = await this.getArquivosEmLote(bloco3)
+        const listaArquivosBloco4 = await this.getArquivosEmLote(bloco4)
+        const listaArquivosBloco5 = await this.getArquivosEmLote(bloco5)
+        const listaArquivosBloco6 = await this.getArquivosEmLote(bloco6)
+
+        const containerProgramasMontados = [
+            {
+                lista:"principal",
+                arquivos:[arquivoPrincipal]
+            },
+            {
+                lista:"intervalos",
+                arquivos:listaArquivosIntervalo
+            },
+            {
+                lista:"prePos",
+                arquivos:listaArquivoPrePos
+            },
+            {
+                lista:"bloco1",
+                arquivos:listaArquivosBloco1
+            },
+            {
+                lista:"bloco2",
+                arquivos:listaArquivosBloco2
+            },
+            {
+                lista:"bloco3",
+                arquivos:listaArquivosBloco3
+            },
+            {
+                lista:"bloco4",
+                arquivos:listaArquivosBloco4
+            },
+            {
+                lista:"bloco5",
+                arquivos:listaArquivosBloco5
+            },
+            {
+                lista:"bloco6",
+                arquivos:listaArquivosBloco6
+            }
+        ]
+
+            return containerProgramasMontados
+
+    }
+
 
 }

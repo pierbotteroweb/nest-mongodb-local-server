@@ -18,10 +18,10 @@ export class ArquivosController {
         return this.arquivosService.resetAddedonArquivosOfProgramaDeTv(programaDeTv)
     }
 
-    @Post('getArquivosForProgramaMontado')
+    @Get('getArquivosForProgramaMontado')
     getArquivosToAsembleProgramaMontado(
-        @Body('programasDeTv') programasDeTv:string[]){
-        return this.arquivosService.getArquivosToAsembleProgramaMontado(programasDeTv)
+        @Query('programaDeTv') programaDeTv:string){
+        return this.arquivosService.getArquivosToAsembleProgramaMontado(programaDeTv)
     }
 
 }
