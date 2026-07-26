@@ -24,4 +24,10 @@ export class ArquivosController {
         return this.arquivosService.getArquivosToAsembleProgramaMontado(programaDeTv)
     }
 
+    @Get('getListaDeArquivos')
+    getListaDeArquivosPorCategoria(
+        @Query('categoria') categoria:string){
+        return this.arquivosService.getArquivosPorCaterogia(categoria)
+    }
+
 }
