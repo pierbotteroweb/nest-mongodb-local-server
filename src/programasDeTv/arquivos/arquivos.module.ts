@@ -16,7 +16,8 @@ import { ArquivoSchema } from 'src/schemas/arquivo.schema';
           { name: 'Movies', schema: ArquivoSchema, collection: 'movies' },
           { name: 'Noite', schema: ArquivoSchema, collection: 'noite' },
           { name: 'Novelas', schema: ArquivoSchema, collection: 'novelas' },
-          { name: 'Originais', schema: ArquivoSchema, collection: 'originais' }
+          { name: 'Originais', schema: ArquivoSchema, collection: 'originais' },
+          { name: 'Dvds', schema: ArquivoSchema, collection: 'dvds' }
     ])
   ],
   providers:[ArquivosService]
