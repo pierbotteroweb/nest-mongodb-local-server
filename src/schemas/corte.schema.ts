@@ -2,7 +2,7 @@ import { Prop, Schema } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 
 @Schema({_id:false})
-export class Bloco extends Document {
+export class Corte extends Document {
 
     @Prop()
     atracao:string
@@ -33,6 +33,15 @@ export class Bloco extends Document {
 
     @Prop()
     indice:number
+
+    @Prop()
+    inicio:number
+
+    @Prop()
+    final:number
+
+    @Prop()
+    programaMontadoOrder:number
 
     @Prop()
     dia:string
