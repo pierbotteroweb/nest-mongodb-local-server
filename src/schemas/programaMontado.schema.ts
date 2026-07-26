@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
-import { Bloco } from "./bloco.schema";
+import { Corte } from "./corte.schema";
 
 @Schema({collection: 'programasMontados'})
 export class ProgramaMontado extends Document {
@@ -14,8 +14,8 @@ export class ProgramaMontado extends Document {
     @Prop()
     horarioDeExibicao:string
     
-    @Prop({type:[Bloco]})
-    blocos:Bloco
+    @Prop({type:[Corte]})
+    cortes:Corte[]
 
     @Prop()
     arquivo:string
@@ -34,6 +34,9 @@ export class ProgramaMontado extends Document {
 
     @Prop()
     canal:string
+
+    @Prop()
+    gradeOrder:number
 
 }
 
