@@ -7,7 +7,7 @@ import { Programa } from 'src/schemas/programa.schema';
 @Injectable()
 export class ArquivosService {
 
-    private readonly arquivosPorTipo: Record<string, Model<Arquivo>>
+    private readonly arquivosPorCategoria: Record<string, Model<Arquivo>>
 
     constructor(
             @InjectModel(Programa.name)
@@ -30,11 +30,14 @@ export class ArquivosService {
     
             @InjectModel('Novelas')
             private readonly novelasModel: Model<Arquivo>,
+
+            @InjectModel('Dvds')
+            private readonly dvdsModel: Model<Arquivo>,
     
             @InjectModel('Originais')
             private readonly originaisModel: Model<Arquivo>){
                 
-                this.arquivosPorTipo = {
+                this.arquivosPorCategoria = {
                     dublado: this.dubladoModel,
                     intervalos: this.intervalosModel,
                     madrugada: this.madrugadaModel,
@@ -42,6 +45,7 @@ export class ArquivosService {
                     noite: this.noiteModel,
                     novelas: this.novelasModel,
                     originais: this.originaisModel,
+                    dvds: this.dvdsModel,
                 }
 
     }
@@ -60,7 +64,7 @@ export class ArquivosService {
 
         const { tipo } = programa;
 
-        const arquivoModel = this.arquivosPorTipo[tipo];
+        const arquivoModel = this.arquivosPorCategoria[tipo];
 
         if (!arquivoModel) {
             throw new BadRequestException(`Tipo inválido: ${tipo}`);
@@ -90,7 +94,7 @@ export class ArquivosService {
 
         const { tipo } = programa;
 
-        const arquivoModel = this.arquivosPorTipo[tipo];
+        const arquivoModel = this.arquivosPorCategoria[tipo];
 
         if (!arquivoModel) {
             throw new BadRequestException(`Tipo inválido: ${tipo}`);
@@ -229,6 +233,23 @@ export class ArquivosService {
         ]
 
             return containerProgramasMontados
+
+    }
+
+    async getArquivosPorCaterogia(categoria:string){
+
+        const arquivoModel = this.arquivosPorCategoria[categoria];
+
+        if (!arquivoModel) {
+            throw new BadRequestException(`Categoria inválida: ${categoria}`);
+        }
+
+        let listaDeArquivos = await arquivoModel
+        .find({})
+        .lean()
+        .exec();
+
+        return listaDeArquivos
 
     }
 
