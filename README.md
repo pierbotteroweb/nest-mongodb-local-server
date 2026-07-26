@@ -3,7 +3,7 @@ Nest - version 11.0.14
 
 01) npm install -g @nestjs/cli
 02) nest new nome-do-app
-03) npm run start. Na verdade nest start --watch para o logger atualizar ocm mudancas.
+03) npm run start. Na verdade nest start --watch para o logger atualizar com mudancas.
 04) npm install @nestjs/mongoose mongoose
 05) nest g module database/mongo
 06) mongodb connection
@@ -30,3 +30,7 @@ https://docs.nestjs.com/fundamentals/lifecycle-events
 20) Reset de added em arquivos de um mesmo programaDeTV em uma collection
 21) API criado para obter arquivos necessários para criacao de programa montado
 
+para se conectar use mongodb://mongo1:27017/shufleTV?directConnection=true
+
+Para criar um resource completo (com controller, module, e service )
+nest g resource "nome_do_resource"
