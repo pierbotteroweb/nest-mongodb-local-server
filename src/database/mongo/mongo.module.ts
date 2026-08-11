@@ -5,7 +5,7 @@ import { Connection } from 'mongoose';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb://host.docker.internal:27017/shufleTV?directConnection=true',
+      process.env.MONGO_URL ?? 'mongodb://mongo1:27017/shuffletv?replicaSet=rs0',
       { autoIndex: true },
     ),
   ],
