@@ -5,7 +5,7 @@ import { Connection } from 'mongoose';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      process.env.MONGO_URL ?? 'mongodb://mongo1:27017/shuffletv?replicaSet=rs0',
+      process.env.MONGO_URL ?? 'mongodb://mongo1:27017/shufleTV?replicaSet=rs0',
       { autoIndex: true },
     ),
   ],
